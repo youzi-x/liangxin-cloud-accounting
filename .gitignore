@@ -1,0 +1,13 @@
+server.out.log
+server.err.log
+*.log
+*.pid
+data/
+bin/
+node_modules/
+vendor/
+.env
+.env.*
+_audit_restored/
+_audit_tmp/
+_local_preview/
