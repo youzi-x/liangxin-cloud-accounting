@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>良心云会计本地财务系统</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <div class="brand">
+        <div class="brand-mark">财</div>
+        <div>
+          <h1>良心云会计</h1>
+          <p>本地版</p>
+        </div>
+      </div>
+      <nav class="primary-nav" id="primaryNav"></nav>
+    </aside>
+
+    <div class="flyout hidden" id="flyout"></div>
+
+    <main class="main">
+      <header class="system-top">
+        <div class="account-picker">
+          <span id="topAccountName">111</span>
+          <span class="chev">▾</span>
+        </div>
+        <button class="icon-btn" title="新增">＋</button>
+        <button class="icon-btn" title="账套">▨</button>
+        <div class="period-picker">
+          <span>账期</span>
+          <strong id="topPeriod">2026-07</strong>
+          <span class="tiny-icon">□</span>
+          <span class="tiny-icon">↻</span>
+        </div>
+        <div class="top-links">
+          <a>官网</a>
+          <a>售后</a>
+          <a>帮助</a>
+          <button class="icon-btn" title="设置">⚙</button>
+        </div>
+      </header>
+
+      <div class="tab-strip" id="tabStrip"></div>
+
+      <section class="view active" id="dashboard">
+        <div class="home-grid">
+          <div class="home-left">
+            <section class="home-panel quick-panel">
+              <div class="home-panel-head">
+                <h3>快速上手</h3>
+                <div><a>新手引导</a><a>更多</a><button class="plain-close">×</button></div>
+              </div>
+              <div class="quick-flow" id="quickFlow"></div>
+            </section>
+
+            <section class="home-panel">
+              <h3>常用功能</h3>
+              <div class="common-grid" id="commonGrid"></div>
+            </section>
+
+            <section class="home-panel balance-panel">
+              <div class="home-panel-head">
+                <h3>余额详情</h3>
+                <span id="balancePeriod">2026-07</span>
+              </div>
+              <div class="balance-layout">
+                <div class="line-card">
+                  <div class="mini-stat">
+                    <span class="round-icon blue">￥</span>
+                    <div><span>库存现金(元)</span><strong>0.00</strong></div>
+                  </div>
+                  <div class="fake-chart">
+                    <div class="axis-values"><span>1</span><span>0.8</span><span>0.6</span><span>0.4</span><span>0.2</span><span>0</span></div>
+                    <div class="grid-lines"></div>
+                    <div class="months">01月 02月 03月 04月 05月 06月 07月 08月 09月 10月 11月 12月</div>
+                  </div>
+                </div>
+                <div class="balance-cards">
+                  <div><span>库存现金</span><strong>￥0.00</strong><b class="blue">￥</b></div>
+                  <div><span>银行存款</span><strong>￥0.00</strong><b class="red">￥</b></div>
+                  <div><span>应收账款</span><strong>￥0.00</strong><b class="yellow">币</b></div>
+                  <div><span>应付账款</span><strong>￥0.00</strong><b class="green">￥</b></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="home-panel operation-panel">
+              <h3>经营状况表</h3>
+              <div class="operation-stats">
+                <div><span class="round-icon blue">收</span><p>收入(元)</p><strong>0.00</strong></div>
+                <div><span class="round-icon orange">本</span><p>成本(元)</p><strong>0.00</strong></div>
+                <div><span class="round-icon green">费</span><p>费用(元)</p><strong>0.00</strong></div>
+                <div><span class="round-icon red">税</span><p>税金(元)</p><strong>0.00</strong></div>
+                <div><span class="round-icon purple">利</span><p>利润(元)</p><strong>0.00</strong></div>
+              </div>
+              <div class="wide-fake-chart"></div>
+            </section>
+          </div>
+
+          <aside class="home-right">
+            <section class="voucher-card">
+              <div class="voucher-month" id="voucherMonth">2026-07</div>
+              <div class="voucher-counts">
+                <div><span>总数</span><strong id="voucherTotal">0</strong><em>张</em></div>
+                <div><span>附件</span><strong>0</strong><em>张</em></div>
+              </div>
+              <button data-table="vouchers" data-title="新增凭证">＋ 新增凭证</button>
+              <div class="paper-art"></div>
+            </section>
+
+            <section class="home-panel expense-panel">
+              <div class="home-panel-head">
+                <h3>费用统计</h3>
+                <span id="expensePeriod">2026-07</span>
+              </div>
+              <div class="expense-body">
+                <ul>
+                  <li><i class="dot green"></i>销售费用</li>
+                  <li><i class="dot yellow"></i>管理费用</li>
+                  <li><i class="dot blue"></i>财务费用</li>
+                </ul>
+                <div class="donut"><span>0.00<br>合计</span></div>
+              </div>
+            </section>
+
+            <section class="home-panel feedback-panel">
+              <h3>意见反馈</h3>
+              <p>有任何关于产品的功能问题都可反馈</p>
+              <button>我要反馈</button>
+              <div class="feedback-art"></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="module">
+        <div class="module-summary" id="moduleSummary"></div>
+        <div class="panel">
+          <div class="panel-title">
+            <h3 id="moduleTablesTitle">模块数据表</h3>
+            <span id="modulePath"></span>
+          </div>
+          <div class="sub-grid" id="submenuGrid"></div>
+          <div class="module-grid" id="activeModuleGrid"></div>
+        </div>
+        <div class="panel table-panel">
+          <div class="panel-title">
+            <h3 id="tableTitle">表数据</h3>
+            <span id="tableMeta">选择一个表查看</span>
+          </div>
+          <div class="toolbar compact">
+            <input id="tableSearch" type="search" placeholder="在当前表里搜索文本字段">
+            <button id="tableSearchBtn">搜索</button>
+          </div>
+          <div class="table-wrap wide"><table id="genericTable"></table></div>
+        </div>
+      </section>
+
+      <section class="view" id="voucherEntry">
+        <div class="voucher-editor">
+          <div class="voucher-tip">☻ 亲，按回车键或者Tab，能快速选择单元格哟！</div>
+          <div class="voucher-tools">
+            <button class="square-tool active">☉</button>
+            <button class="round-tool disabled">←</button>
+            <button class="round-tool disabled">→</button>
+            <div class="size-toggle"><span>大</span><strong>小</strong></div>
+            <button class="more-voucher">更多凭证</button>
+          </div>
+          <div class="voucher-paper">
+            <h2>记账凭证</h2>
+            <div class="voucher-meta">
+              <div class="meta-left">
+                <label>记 <span class="down">▾</span></label>
+                <label>字第 <input value="001"> 号</label>
+                <label>日期 <input id="voucherDate" value="2026-07-28"> <span class="calendar">□</span></label>
+              </div>
+              <div class="meta-right">
+                <a>备注</a>
+                <button disabled>🔗 附件</button>
+                <label>附单据 <input> 张</label>
+              </div>
+            </div>
+
+            <div class="voucher-table-wrap">
+              <button class="side-plus">＋</button>
+              <table class="voucher-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2" class="row-no">行次</th>
+                    <th rowspan="2" class="summary-col">摘要</th>
+                    <th rowspan="2" class="subject-col">会计科目 <button>习惯设置</button></th>
+                    <th colspan="11">借方金额</th>
+                    <th colspan="11">贷方金额</th>
+                  </tr>
+                  <tr id="moneyHeader"></tr>
+                </thead>
+                <tbody id="voucherRows"></tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="voucher-total">合计：零元整</td>
+                    <td colspan="22"></td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="row-actions">▣ ×</div>
+            </div>
+
+            <div class="voucher-foot">
+              <div class="people">
+                <span>制单人：1</span>
+                <span>✎</span>
+                <span>审核人：</span>
+              </div>
+              <div class="voucher-buttons">
+                <button class="outline">模板 <span>⌄</span></button>
+                <button disabled>保存</button>
+                <button disabled>保存并新增</button>
+                <button disabled>保存并打印</button>
+                <button class="outline">草稿 <span>⌄</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
